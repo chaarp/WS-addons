@@ -103,6 +103,12 @@ function RuneMaster:CraftAndRune_LoadSchematics() --TODO: Total materials count 
 		end
 	end
 	
+	local rover = Apollo.GetAddon("Rover");
+	rover:AddWatch("tRuneCounts", tRuneCounts)
+	
+	local tShoppingList = {}
+	
+	local addToRover = true;
 	for nRuneId,nCount in pairs(tRuneCounts) do
 		local wndRuneSchematic = Apollo.LoadForm(self.xmlDoc, "Craft_Rune", self.wndMain:FindChild("CraftAndRune"):FindChild("Schematics"), self)
 		local itemRune = Item.GetDataFromId(nRuneId)
@@ -147,6 +153,7 @@ function RuneMaster:CraftAndRune_LoadSchematics() --TODO: Total materials count 
 			wndRuneSchematic:FindChild("Cost"):SetAmount(tSchematicInfo.monMaxCraftingCost)
 			for _,tMaterial in pairs(tSchematicInfo.arMaterials) do
 				local itemMaterial = tMaterial.itemMaterial
+				local itemMaterialId = itemMaterial:GetItemId();
 				local wndMaterial = Apollo.LoadForm(self.xmlDoc, "Craft_Material", wndRuneSchematic:FindChild("Materials"), self)
 				wndMaterial:FindChild("Icon"):SetSprite(itemMaterial:GetIcon())
 				wndMaterial:FindChild("Amount"):SetText(string.format("%s / %s",tMaterial.nOwned,tMaterial.nNeeded*nCount))
@@ -155,9 +162,26 @@ function RuneMaster:CraftAndRune_LoadSchematics() --TODO: Total materials count 
 				end
 				self:HelperBuildItemTooltip(wndMaterial, itemMaterial)
 				
+				if addToRover then
+					addToRover = false
+					local rover = Apollo.GetAddon("Rover");					
+					rover:AddWatch("tMaterial", tMaterial)
+				end
 				--[[tMaterial.itemMaterial
 				tMaterial.nNeeded
 				tMaterial.nOwned--]]
+				
+				if tShoppingList[itemMaterialId] ~= nil then				
+					tShoppingList[itemMaterialId].nNeeded = tShoppingList[itemMaterialId].nNeeded + (tMaterial.nNeeded*nCount)				
+				else
+					tShoppingItem = {};
+					tShoppingItem.nNeeded = (tMaterial.nNeeded*nCount)
+					tShoppingItem.nOwned = tMaterial.nOwned
+					tShoppingItem.tItemData = itemMaterial
+					
+					tShoppingList[itemMaterialId] = tShoppingItem
+				end
+				
 			end
 			wndRuneSchematic:FindChild("Materials"):ArrangeChildrenHorz()
 			
@@ -171,12 +195,18 @@ function RuneMaster:CraftAndRune_LoadSchematics() --TODO: Total materials count 
 			wndRuneSchematic:FindChild("Craft"):Show(false)
 		end
 	end
+	
+	rover:AddWatch("tShoppingList", tShoppingList);
+	
 	self.wndMain:FindChild("CraftAndRune"):FindChild("Schematics"):ArrangeChildrenVert()
 end
 
 function RuneMaster:UpdateNeededList()
 	local tShoppingList = {}
 	self.wndMain:FindChild("CraftAndRune"):FindChild("ShoppingList"):DestroyChildren()
+	local kappaface = {}
+	ChatSystemLib.PostOnChannel(2, "RuneMaster:UpdateNeededList()")
+
 	
 	for _,wndRuneSchematic in pairs(self.wndMain:FindChild("CraftAndRune"):FindChild("Schematics"):GetChildren()) do
 		local tSchematicInfo = wndRuneSchematic:GetData()
@@ -197,6 +227,7 @@ function RuneMaster:UpdateNeededList()
 				--tShoppingList[nMaterialId] = tShoppingList[nMaterialId] + nNeeded
 			end
 			self:HelperBuildItemTooltip(wndMaterial, itemMaterial)
+			kappaface = tMaterial
 			
 			--[[tMaterial.itemMaterial
 			tMaterial.nNeeded
@@ -204,6 +235,8 @@ function RuneMaster:UpdateNeededList()
 		end
 	end
 	
+		
+	ChatSystemLib.PostOnChannel(2, "RuneMaster:UpdateNeededList()")
 	--[[for nItemId,nNeeded in pairs(tShoppingList) do
 		local itemMaterial = Item.GetDataFromId(nItemId)
 		local wndMaterial = Apollo.LoadForm(self.xmlDoc, "Craft_ShoppingList", self.wndMain:FindChild("CraftAndRune"):FindChild("ShoppingList"), self)
