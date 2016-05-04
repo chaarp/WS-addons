@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sprites>
+    <Sprite Name="RuneFlash" Cycle="1">
+        <Frame Texture="UI\Assets\Textures\UI_WhiteBG.tex" x0="0" x1="0" x2="0" x3="0" x4="64" x5="64" y0="0" y1="0" y2="0" y3="0" y4="64" y5="64" Stretchy="1" HotspotX="0" HotspotY="0" Duration="1.000" StartColor="FFFFFFFF" EndColor="00FFFFFF"/>
+        <Frame Texture="UI\Assets\Textures\UI_WhiteBG.tex" x0="0" x1="0" x2="0" x3="0" x4="64" x5="64" y0="0" y1="0" y2="0" y3="0" y4="64" y5="64" Stretchy="1" HotspotX="0" HotspotY="0" Duration="4.000" StartColor="00FFFFFF" EndColor="FFFFFFFF"/>
+    </Sprite>
+</Sprites>

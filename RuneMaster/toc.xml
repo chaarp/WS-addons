@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Addon Author="Potato" APIVersion="11" Name="RuneMaster" Description="">
+	<Script Name="Libs/LibJSON/LibJSON-2.5.lua"/>
+    <Script Name="RuneMaster.lua"/>
+    <Script Name="RuneMaster_Data.lua"/>
+    <Script Name="RuneMaster_Settings.lua"/>
+    <Script Name="RuneMaster_Helpers.lua"/>
+    <Script Name="RuneMaster_ItemSlot.lua"/>
+    <Script Name="RuneMaster_Spreadsheet.lua"/>
+    <Script Name="RuneMaster_RuneChoice.lua"/>
+    <Script Name="RuneMaster_CraftAndRune.lua"/>
+    <Script Name="RuneMaster_StatReview.lua"/>
+    <Script Name="RuneMaster_RuneBuilds.lua"/>
+    <Form Name="RuneMaster.xml"/>
+</Addon>
