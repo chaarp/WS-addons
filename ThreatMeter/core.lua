@@ -215,7 +215,7 @@ function ThreatMeter:ShouldShow()
                 (self.db.bShowWhenAlone and not bInGroup and not bInRaid and not bHasPet)
 
 	-- check if we are in instanced PvP
-	if self.db.bHideWhenInPvP and MatchingGameLib.IsInPVPGame() then
+	if self.db.bHideWhenInPvP and MatchingGameLib:IsInPvpGame() then
     bShow = false
   end
 	return bShow
