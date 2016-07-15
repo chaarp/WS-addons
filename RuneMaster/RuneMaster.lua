@@ -93,7 +93,18 @@ function RuneMaster:OnDocLoaded()
 		Apollo.LoadSprites("RMSprites.xml","RMSprites")
 		
 		self:InitSettings() --TODO: Move to slash command?
+		
+		self.tmrDelayedInit = ApolloTimer.Create(0.1, false, "AddToInterfaceMenu", self)
 	end
+end
+
+function RuneMaster:OnInterfaceMenuListHasLoaded()	
+	self:AddToInterfaceMenu(); 	
+end
+
+function RuneMaster:AddToInterfaceMenu()
+	Event_FireGenericEvent("InterfaceMenuList_NewAddOn","RuneMaster",{"RuneMaster_Show","",	""})
+	self.tmrDelayedInit = nil;
 end
 
 function RuneMaster:OnInterfaceMenuListHasLoaded()

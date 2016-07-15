@@ -355,11 +355,150 @@ function RuneMaster:StatReview_UpdateStatReviewV2() --V2
 	self.wndMain:FindChild("wndStatReview"):ArrangeChildrenVert()
 end
 
+function RuneMaster:GetFoilSet()
+	local set = {
+				nMaxPower = 8,
+				nSetId = 14,
+				strSetName = "Foil",		
+				arBonuses = {
+					{
+					bDefault = true,
+					eProperty = 101,
+					nPower = 2,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0010,
+					strName = "Deflect Chance"
+					},
+					{
+					bDefault = true,
+					eProperty = 7,
+					nPower = 3,
+					nScalar = 1.0020,
+					nSortOrder = 4,
+					--nValue = 0.0040000001899898,
+					strName = "Max Health"
+					},
+					{
+					bDefault = false,
+					nPower = 4
+					},
+					{
+					bDefault = true,
+					eProperty = 157,
+					nPower = 5,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0150,
+					strName = "Critical Mitigation"
+					},
+					{
+					bDefault = true,
+					eProperty = 7,
+					nPower = 6,
+					nScalar = 1.0028,
+					nSortOrder = 4,
+					--nValue = 0.0055,
+					strName = "Max Health"
+					},
+					{
+					bDefault = true,
+					eProperty = 112,
+					nPower = 7,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0018,
+					strName = "Deflect Chance"
+					},
+					{
+					bDefault = false,
+					nPower = 8
+					},
+				}					
+	}
+
+	return set
+
+end
+
+function RuneMaster:GetRuthlessSet()
+
+local set = {
+				nMaxPower = 8,
+				nSetId = 13,
+				strSetName = "Ruthless",		
+				arBonuses = {
+					{
+					bDefault = true,
+					eProperty = 154,
+					nPower = 2,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0035000001080334,
+					strName = "Multi-Hit Chance"
+					},
+					{
+					bDefault = true,
+					eProperty = 112,
+					nPower = 3,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0040000001899898,
+					strName = "Multi-Hit Severity"
+					},
+					{
+					bDefault = false,
+					nPower = 4
+					},
+					{
+					bDefault = true,
+					eProperty = 104,
+					nPower = 5,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.003000000026077,
+					strName = "Strikethrough"
+					},
+					{
+					bDefault = true,
+					eProperty = 154,
+					nPower = 6,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0055,
+					strName = "Multi-Hit Chance"
+					},
+					{
+					bDefault = true,
+					eProperty = 112,
+					nPower = 7,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0060,
+					strName = "Multi-Hit Severity"
+					},
+					{
+					bDefault = false,
+					nPower = 8
+					},
+				}					
+	}
+
+	return set
+
+end
 
 function RuneMaster:StatReview_UpdateStatReview() --V3
 	--TODO: Move this to self.ktSets
 	local ktSetsTemp = CraftingLib.GetRuneSets()
+	
+	local ruthless = self:GetRuthlessSet();	
+	local foil = self:GetFoilSet()
+	
 	local ktSets = {}
+	ktSets[ruthless.nSetId] = ruthless
+	ktSets[foil.nSetId] = foil
+	
 	for _,tSet in pairs(ktSetsTemp) do
 		ktSets[tSet.nSetId] = tSet
 	end
@@ -367,6 +506,10 @@ function RuneMaster:StatReview_UpdateStatReview() --V3
 	
 	--GUI Prep
 	self.wndMain:FindChild("wndStatReview"):DestroyChildren()
+	
+	local rover = Apollo.GetAddon("Rover");
+	--rover:AddWatch("stats", tStatReview_Armors);
+	--rover:AddWatch("sets", ktSets);
 	
 	--tStatReview Table Format as: tStatReview={stats={[eStat]={curr=#,plan=#}},sets={[eSet]={curr=#,plan=#}}}
 	--Get stats
@@ -377,13 +520,15 @@ function RuneMaster:StatReview_UpdateStatReview() --V3
 			tStats[eStatId] = tStats[eStatId] or {rating={curr=0,plan=0},percent={curr=0,plan=0}}
 			tStats[eStatId].rating.curr = tStats[eStatId].rating.curr + tRating.curr
 			tStats[eStatId].rating.plan = tStats[eStatId].rating.plan + tRating.plan
-		end
+		end		
+		
 		
 		--Set stats (ePercent -> eStat)
 		for eSetId, tSetPower in pairs(tStatReview.sets) do
 			--ktSets[eSetId]
-			
+			--Print("Looping setid" .. tostring(eSetId))
 			local tPercents = {}
+			--rover:AddWatch("tPercents", tPercents)
 			for _,tBonus in pairs(ktSets[eSetId].arBonuses) do --TODO: self.ktSets
 				--Print(nCurrPower..":"..tBonus.nPower)
 				local bFound = false
@@ -405,13 +550,14 @@ function RuneMaster:StatReview_UpdateStatReview() --V3
 						tPercents[ePercentId] = tPercents[ePercentId] or {curr=0,plan=0}
 						tPercents[ePercentId].plan = tPercents[ePercentId].plan + fValue
 					else
-						--Print(string.format("[RM] Bonus Error with %s (%s), nScalar: %s",Item.GetPropertyName(eStat), eStat, tostring(tBonus.nScalar)))
+						--Print(string.format("[RM] Bonus Error with %s (%s), nScalar: %s",Item.GetPropertyName(eStat), eStat, tostring(tBonus.nValue)))
 					end
 					bFound = true
-				end
+				end				
 				if not bFound then
 					break
 				end
+				
 			end
 
 			for ePercentId, tPercent in pairs(tPercents) do
