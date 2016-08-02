@@ -107,6 +107,18 @@ RuneMaster.ktRuneStats = {
     strShort = "GLNCE",
     strSprite = "IconSprites:Icon_CraftingIcon_Water_CircuitBoard_Crafting_Glance_Icon"
   },
+  [60] = {
+	strLocale = "Multi-Hit Severity",
+	strRatingFunc = "GetMultiHitSeverityRating",
+	strShort = "MHSEV",
+	strSprite = "IconSprites:Icon_CraftingIcon_Earth_CriticalHitSeverity_CircuitBoard_Crafting_Icon"
+  },
+  [61] = {
+  	strLocale = "Glance Mitigation",
+	strRatingFunc = "GetGlanceMitigationRating",
+	strShort = "GLMIT",
+	strSprite = "IconSprites:Icon_CraftingIcon_Logic_CriticalHitMitigation_CircuitBoard_Crafting_Icon"
+  },
   [63] = {
     strLocale = "Reflect Rating",
     strRatingFunc = "GetDamageReflectRating",
@@ -136,7 +148,7 @@ RuneMaster.ktArmorSlotInfo = {
 }
 
 --Updateable information
-RuneMaster.ktRuneLevels = {0,70,90,100,110}
+RuneMaster.ktRuneLevels = {0,70,90,100,110,130}
 RuneMaster.ktRuneLevelNames = {
 	[10] = "Lesser",
 	[20] = "Normal",
@@ -145,15 +157,17 @@ RuneMaster.ktRuneLevelNames = {
 	[50] = "High",
 	[80] = "Superb",
 	[100] = "Pure",
-	[120] = "Divine"
+	[120] = "Divine",
+	[140] = "Risen"
 }
 RuneMaster.ktRuneRequiredLevels = {
 	[80]=70,
 	[100]=90,
-	[120]=110
+	[120]=110,
+	[140]=130
 }
   RuneMaster.ktRuneElements = {
-	{
+	{ --Striker 1
       [30] = {
         [78596] = 29,
         [78597] = 32,
@@ -203,7 +217,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80744] = 7
       }
     },
-    {
+    { --Defiance 2
       [30] = {
         [78605] = 58,
         [78612] = 42,
@@ -253,7 +267,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80751] = 32
       }
     },
-    {
+    { --Pulse 3
       [30] = {
         [78632] = 34,
         [78633] = 29,
@@ -303,7 +317,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80754] = 56
       }
     },
-    {
+    { --Havoc 4
       [40] = {
         [78704] = 34,
         [78705] = 29,
@@ -345,7 +359,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80761] = 32
       }
     },
-    {
+    { --Elusion 5
       [40] = {
         [78713] = 33,
         [78720] = 7,
@@ -387,7 +401,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80768] = 32
       }
     },
-    {
+    { --Resurgence 6
       [40] = {
         [78740] = 34,
         [78741] = 5,
@@ -429,7 +443,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80775] = 7
       }
     },
-    {
+    { --Onslaught 7
       [50] = {
         [78866] = 57,
         [78867] = 25,
@@ -463,7 +477,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80802] = 32
       }
     },
-    {
+    { --Alleviation 8
       [50] = {
         [78878] = 37,
         [78879] = 7,
@@ -497,7 +511,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80809] = 42
       }
     },
-    {
+    { --Concentration 9
       [50] = {
         [78890] = 56,
         [78891] = 6,
@@ -531,7 +545,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80816] = 5
       }
     },
-    {
+    { --Devastation 10
       [80] = {
         [79082] = 34,
         [79083] = 47,
@@ -557,7 +571,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80823] = 7
       }
     },
-    {
+    { --Provoker 11
       [80] = {
         [79089] = 33,
         [79098] = 58,
@@ -583,7 +597,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80826] = 29
       }
     },
-    {
+    { --Cynosure 12
       [80] = {
         [79100] = 29,
         [79105] = 6,
@@ -609,7 +623,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80833] = 7
       }
     },
-    {
+    { --Ruthless 13
       [110] = {
         [80834] = 29,
         [80839] = 32,
@@ -623,7 +637,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80973] = 57
       }
     },
-    {
+    { --Foil 14
       [110] = {
         [80842] = 33,
         [80847] = 37,
@@ -637,7 +651,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80977] = 7
       }
     },
-    {
+    { --Curator 15
       [110] = {
         [80966] = 34,
         [80967] = 5,
@@ -651,7 +665,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [80981] = 47
       }
     },
-    {
+    { --Unity 16
       [100] = {
         [83315] = 57,
         [83316] = 25,
@@ -661,10 +675,16 @@ RuneMaster.ktRuneRequiredLevels = {
         [83460] = 25,
         [83461] = 32,
         [83462] = 7
-      }
+      },
+	  [140] = { -- Unity 16
+		[91020] = 25,
+		[91021] = 32,
+		[91022] = 7,
+		[91019] = 57
+	  }
     },
-    {
-      [100] = {
+    { --Energized Arms 17
+      [100] = { 
         [83319] = 37,
         [83320] = 42,
         [83321] = 32,
@@ -673,9 +693,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83464] = 42,
         [83465] = 32,
         [83466] = 7
-      }
+      },
+	  [140] = { -- Energized Arms 17
+		[91026] = 7,
+		[91024] = 42,
+		[91025] = 32,
+		[91023] = 37
+	  }
     },
-    {
+    { --Burning Rage  18
       [120] = {
         [83323] = 34,
         [83324] = 47,
@@ -685,9 +711,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83468] = 47,
         [83469] = 32,
         [83470] = 7
-      }
+      },
+      [140] = { -- Burning Rage 18
+		[91029] = 32,
+		[91027] = 34,
+		[91028] = 47,
+		[91030] = 7
+	  }
     },
-    {
+    { --Vanguard 19
       [120] = {
         [83327] = 58,
         [83328] = 37,
@@ -697,9 +729,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83472] = 37,
         [83473] = 29,
         [83474] = 42
-      }
+      },
+      [140] = { --Vanguard 19
+		[91032] = 37,
+		[91033] = 29,
+		[91031] = 58,
+		[91034] = 42
+	  }
     },
-    {
+    { --Brawler 20
       [80] = {
         [83331] = 34,
         [83332] = 47,
@@ -711,7 +749,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83478] = 7
       }
     },
-    {
+    { --Field Commander 21
       [80] = {
         [83335] = 33,
         [83336] = 37,
@@ -723,7 +761,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83482] = 7
       }
     },
-    {
+    { --Eradication 22
       [100] = {
         [83339] = 29,
         [83340] = 32,
@@ -733,9 +771,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83484] = 32,
         [83485] = 7,
         [83486] = 57
-      }
+      },
+	  [140] = { --Eradication 22
+		[91035] = 29,
+		[91036] = 32,
+		[91037] = 7,
+		[91038] = 57
+	  }
     },
-    {
+    { --Unbreakable 23
       [100] = {
         [83343] = 37,
         [83344] = 42,
@@ -745,9 +789,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83488] = 42,
         [83489] = 32,
         [83490] = 7
-      }
+      },
+	  [140] = { -- Unbreakable 23
+		[91041] = 32,
+		[91042] = 7,
+		[91040] = 42,
+		[91039] = 37
+	  }
     },
-    {
+    { --Technician 24
       [120] = {
         [83347] = 57,
         [83348] = 25,
@@ -757,9 +807,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83492] = 25,
         [83493] = 32,
         [83494] = 7
-      }
+      },
+      [140] = { --Technician 24
+		[91044] = 25,
+		[91045] = 32,
+		[91046] = 7,
+		[91043] = 57
+	   }
     },
-    {
+    { --Mecha Shield 25
       [120] = {
         [83351] = 58,
         [83352] = 37,
@@ -769,9 +825,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83496] = 37,
         [83497] = 29,
         [83498] = 42
-      }
+      },
+		[140] = { --Mecha Shield 25
+			[91047] = 58,
+			[91048] = 37,
+			[91049] = 29,
+			[91050] = 42
+		}
     },
-    {
+    { --Hypercharge 26
       [80] = {
         [83355] = 29,
         [83356] = 32,
@@ -783,7 +845,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83502] = 57
       }
     },
-    {
+    { --Lockdown 27
       [80] = {
         [83359] = 58,
         [83360] = 37,
@@ -795,7 +857,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83506] = 42
       }
     },
-    {
+    { --Overcharge 28
       [100] = {
         [83363] = 57,
         [83364] = 25,
@@ -805,9 +867,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83508] = 25,
         [83509] = 32,
         [83510] = 7
-      }
+      },
+	  [140] = { -- Overcharge 28
+		[91053] = 32,
+		[91054] = 7,
+		[91052] = 25,
+		[91051] = 57
+	  }
     },
-    {
+    { --Great Aegis 29
       [100] = {
         [83367] = 29,
         [83368] = 6,
@@ -817,9 +885,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83512] = 6,
         [83513] = 7,
         [83514] = 5
-      }
+      },
+	  [140] = { --Great Aegis 29
+		[91056] = 6,
+		[91057] = 7,
+		[91055] = 29,
+		[91058] = 5
+	  }
     },
-    {
+    { --Atomic Charge 30
       [120] = {
         [83371] = 29,
         [83372] = 32,
@@ -829,9 +903,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83516] = 32,
         [83517] = 7,
         [83518] = 57
-      }
+      },
+	  [140] = { --Atomic Charge 30
+		[91059] = 29,
+		[91060] = 32,
+		[91061] = 7,
+		[91062] = 57
+	  }
     },
-    {
+    { --Resource Probes 31
       [120] = {
         [83375] = 56,
         [83376] = 6,
@@ -841,9 +921,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83520] = 6,
         [83521] = 5,
         [83522] = 7
-      }
+      },
+      [140] = { --Resource Probes 31
+		[91065] = 5,
+		[91066] = 7,
+		[91064] = 6,
+		[91063] = 56
+	  }
     },
-    {
+    { --Offbear 32 
       [80] = {
         [83379] = 29,
         [83380] = 32,
@@ -855,7 +941,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83526] = 57
       }
     },
-    {
+    {--Quickening 33
       [80] = {
         [83383] = 56,
         [83384] = 6,
@@ -867,7 +953,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83530] = 7
       }
     },
-    {
+    { --Assassin 34
       [100] = {
         [83387] = 57,
         [83388] = 25,
@@ -877,9 +963,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83532] = 25,
         [83533] = 32,
         [83534] = 7
-      }
+      },
+	  [140] = { --Assassin 34
+		[91068] = 25,
+		[91069] = 32,
+		[91070] = 7,
+		[91067] = 57
+	  }
     },
-    {
+    { --Waller 35
       [100] = {
         [83391] = 37,
         [83392] = 42,
@@ -889,9 +981,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83536] = 42,
         [83537] = 32,
         [83538] = 7
-      }
+      },
+      [140] = { --Waller 35
+		[91074] = 7,
+		[91072] = 42,
+		[91073] = 32,
+		[91071] = 37
+	  }
     },
-    {
+    { --Eviscerator 36
       [120] = {
         [83395] = 34,
         [83396] = 47,
@@ -901,9 +999,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83540] = 47,
         [83541] = 32,
         [83542] = 7
-      }
+      },
+      [140] = { --Eviscerator 36
+		[91077] = 32,
+		[91075] = 34,
+		[91076] = 47,
+		[91078] = 7
+	  }
     },
-    {
+    { --Furor 37
       [120] = {
         [83399] = 33,
         [83400] = 37,
@@ -913,9 +1017,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83544] = 37,
         [83545] = 32,
         [83546] = 7
-      }
+      },
+      [140] = { --Furor 37
+		[91080] = 37,
+		[91081] = 32,
+		[91079] = 33,
+		[91082] = 7
+	  }
     },
-    {
+    { --Garroter 38
       [80] = {
         [83403] = 34,
         [83404] = 47,
@@ -927,7 +1037,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83550] = 7
       }
     },
-    {
+    { --Contender 39
       [80] = {
         [83407] = 33,
         [83408] = 37,
@@ -939,7 +1049,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83554] = 7
       }
     },
-    {
+    { --Well of power 40
       [100] = {
         [83411] = 57,
         [83412] = 25,
@@ -949,9 +1059,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83556] = 25,
         [83557] = 32,
         [83558] = 7
-      }
+      },
+	  [140] = { --Well of Power 40
+		[91086] = 7,
+		[91084] = 25,
+		[91085] = 32,
+		[91083] = 57
+	  }
     },
-    {
+    { --Surge Life 41
       [100] = {
         [83415] = 34,
         [83416] = 29,
@@ -961,9 +1077,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83560] = 29,
         [83561] = 56,
         [83562] = 7
-      }
+      },
+	  [140] = { --Surge Life 41
+		[91089] = 56,
+		[91087] = 34,
+		[91088] = 29,
+		[91090] = 7
+	  }
     },
-    {
+    { --Flame Surge 42
       [120] = {
         [83419] = 34,
         [83420] = 29,
@@ -975,7 +1097,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83566] = 7
       }
     },
-    {
+    { --Prevention 43
       [120] = {
         [83423] = 56,
         [83424] = 6,
@@ -985,9 +1107,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83568] = 6,
         [83569] = 5,
         [83570] = 7
-      }
+      },
+      [140] = { --Prevention 43
+		[91098] = 7,
+		[91096] = 6,
+		[91097] = 5,
+		[91095] = 56
+	  }
     },
-    {
+    { --Vindication 44
       [80] = {
         [83427] = 34,
         [83428] = 47,
@@ -999,7 +1127,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83574] = 7
       }
     },
-    {
+    { -- Clean Coat 45
       [80] = {
         [83431] = 29,
         [83432] = 6,
@@ -1011,7 +1139,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83578] = 5
       }
     },
-    {
+    { --Mental Prowess 46
       [100] = {
         [83435] = 34,
         [83436] = 47,
@@ -1021,9 +1149,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83580] = 47,
         [83581] = 32,
         [83582] = 7
-      }
+      },
+	 [140] = { --Mental Prowess 46
+		[91101] = 32,
+		[91099] = 34,
+		[91100] = 47,
+		[91102] = 7
+	  }
     },
-    {
+    { --Guardian 47
       [100] = {
         [83439] = 56,
         [83440] = 6,
@@ -1033,9 +1167,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83584] = 6,
         [83585] = 5,
         [83586] = 7
-      }
+      },
+     [140] = { --Guardian 47
+		[91104] = 6,
+		[91105] = 5,
+		[91106] = 7,
+		[91103] = 56
+	  }
     },
-    {
+    { --Fiendish 48
       [120] = {
         [83443] = 57,
         [83444] = 25,
@@ -1045,9 +1185,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83588] = 25,
         [83589] = 32,
         [83590] = 7
-      }
+      },
+	  [140] = { --Fiendish 48
+		[91110] = 7,
+		[91108] = 25,
+		[91109] = 32,
+		[91107] = 57
+	  }
     },
-    {
+    { --Hardened 49
       [120] = {
         [83447] = 34,
         [83448] = 5,
@@ -1057,9 +1203,15 @@ RuneMaster.ktRuneRequiredLevels = {
         [83592] = 5,
         [83593] = 7,
         [83594] = 47
+      },
+      [140] = { --Hardened 49
+		[91113] = 7,
+		[91114] = 47,
+		[91112] = 5,
+		[91111] = 34
       }
     },
-    {
+    { --Bombardment 50
       [80] = {
         [83451] = 34,
         [83452] = 47,
@@ -1071,7 +1223,7 @@ RuneMaster.ktRuneRequiredLevels = {
         [83598] = 7
       }
     },
-    {
+    { --Unstoppable 51
       [80] = {
         [83455] = 56,
         [83456] = 6,
@@ -1083,7 +1235,199 @@ RuneMaster.ktRuneRequiredLevels = {
         [83602] = 7
       }
     },
-    Basic = {
+	[53] = {--Keelhaul 53
+	  [140] = { 
+		[90615] = 59,
+		[90616] = 34,
+		[90652] = 32,
+		[90651] = 47
+		}
+	},
+	[54] = {--Captain's Curse 54
+	  [140] = { 
+		[90654] = 37,
+		[90655] = 42,
+		[90653] = 58,
+		[90620] = 61
+		}
+	},
+	[55] = {--Broadside 55
+      [140] = { 
+		[90621] = 60,
+		[90658] = 32,
+		[90656] = 57,
+		[90657] = 25
+		}
+	},
+	[56] = {--Deadlight 56
+	  [140] = { 
+	 	[90660] = 37,
+		[90661] = 42,
+		[90659] = 58,
+		[90626] = 61
+		}
+	},
+	[57] = {--Murder 57
+      [140] = { 
+		[90633] = 12,
+		[90670] = 32,
+		[90668] = 34,
+		[90669] = 47
+		}
+	},
+	[58] = {--GraveRobber 58
+	  [140] = { 
+		[90636] = 12,
+		[90673] = 7,
+		[90671] = 33,
+		[90672] = 37
+		}
+	},
+	[59] = {--Déja Vu 59
+	  [140] = { 
+		[90645] = 60,
+		[90682] = 32,
+		[90680] = 57,
+		[90681] = 25
+		}
+	},
+	[60] = {--Requiem 60
+	  [140] = { 
+		[90648] = 60,
+		[90685] = 47,
+		[90683] = 34,
+		[90684] = 5
+		}
+	},
+	[61] = {
+	  [140] = { --Scourge 61
+		[90627] = 60,
+		[90664] = 57,
+		[90662] = 29,
+		[90663] = 32
+		}
+	},
+	[62] = {
+	  [140] = { --Reanimator 62
+		[90666] = 6,
+		[90667] = 5,
+		[90665] = 56,
+		[90630] = 60
+		}
+	},
+	[63] = {--Bullet From Beyond 63
+	  [140] = { 
+		[90639] = 59,
+		[90676] = 32,
+		[90674] = 34,
+		[90675] = 29
+		}
+	},
+	[64] = {--Voice From Beyond 64
+      [140] = { 	
+		[90678] = 6,
+		[90679] = 5,
+		[90677] = 56,
+		[90642] = 60
+		}
+	},
+	[65] = {--Palliated 65
+	  [140] = { 
+		[90720] = 37,
+		[90718] = 42,
+		[90719] = 37,
+		[90721] = 7
+		}
+	},
+	[66] = {--Intensification 66
+      [140] = { 
+		[90723] = 6,
+		[90724] = 56,
+		[90725] = 56,
+		[90722] = 5
+		}
+	},
+	[67] = {
+	  [140] = { --Resumption 67
+		[90729] = 29,
+		[90727] = 6,
+		[90728] = 7,
+		[90726] = 6
+		}
+	},
+	[68] = {--Gleaming 68
+      [140] = { 
+		[90732] = 7,
+		[90733] = 61,
+		[90731] = 58,
+		[90730] = 42
+		}
+	},
+	[69] = {--Ruination 69
+  	  [140] = { 
+		[90735] = 32,
+		[90736] = 47,
+		[90734] = 34,
+		[90737] = 47
+		}
+	},
+	[70] = {--Evasion 70
+ 	  [140] = { 
+		[90741] = 42,
+		[90739] = 33,
+		[90740] = 7,
+		[90738] = 33
+		}
+	},
+	[71] = {--Pandemic 71
+	  [140] = { 
+		[90744] = 57,
+		[90742] = 34,
+		[90743] = 29,
+		[90745] = 57
+		}
+	},
+	[72] = {--Siphoning 72
+      [140] = { 
+		[90747] = 25,
+		[90748] = 32,
+		[90746] = 25,
+		[90749] = 57
+		}
+	},
+	[73] = {--Hardiness 73
+	  [140] = { 
+		[90753] = 7,
+		[90751] = 7,
+		[90752] = 42,
+		[90750] = 33
+		}
+	},
+	[74] = {--Basher 74
+		[140] = { 
+			[90762] = 60,
+			[90763] = 29,
+			[90764] = 7,
+			[90765] = 32
+			}
+	},
+	[75] = {--Rejuvenation 75
+		[140] = { 
+			[90756] = 56,
+			[90754] = 34,
+			[90755] = 34,
+			[90757] = 29
+			}
+	},
+	[76] = {--Vim 76
+		[140] = { 
+			[90759] = 47,
+			[90760] = 5,
+			[90758] = 34,
+			[90761] = 5
+			}
+	},	
+	Basic = {
       [5] = {
         [84956] = 7
       },
@@ -1466,7 +1810,7 @@ RuneMaster.ktRuneRequiredLevels = {
 		  [85865] = 0,
 		  [85866] = 0
 		}
-	  }
+	  },		
   }
   RuneMaster.ktSchematics = {
     [78240] = 3516,
@@ -2673,7 +3017,7 @@ RuneMaster.ktRuneRequiredLevels = {
         } },
       tTiers = { 2, 3, 4, 5, 6 }
     },
-    {
+	{
       nExampleId = 80834,
       strName = "Ruthless",
       tTierInfo = { nil, {
@@ -3688,7 +4032,363 @@ RuneMaster.ktRuneRequiredLevels = {
         },
         {} },
       tTiers = { 2, 3, 4, 5, 6, 7, 8 }
-    }
+    },	
+	[53] = {
+		eClass = 1,
+		nExampleId = 90615,
+		strName = "Keelhaul",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2 ,3 }
+	},
+	[54] = {
+		eClass = 1,
+		nExampleId = 90654,
+		strName = "Captain's Curse",
+		tTierInfo = { nil, {
+			eProperty = 157,
+			nValue = 0.075000002980232
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[55] = {
+		eClass = 2,
+		nExampleId = 90621,
+		strName = "Broadside",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[56] = {
+		eClass = 2,
+		nExampleId = 90660,
+		strName = "Deadlight",
+		tTierInfo = { nil, {
+			eProperty = 157,
+			nValue = 0.075000002980232
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[57] = {
+		eClass = 5,
+		nExampleId = 90633,
+		strName = "Murder",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[58] = {
+		eClass = 5,
+		nExampleId = 90636,
+		strName = "Graverobber",
+		tTierInfo = { nil, {
+			eProperty = 157,
+			nValue = 0.075000002980232
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[59] = {
+		eClass = 3,
+		nExampleId = 90645,
+		strName = "Dejá Vu",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[60] = {
+		eClass = 3,
+		nExampleId = 90648,
+		strName = "Requiem",
+		tTierInfo = { nil, {
+			eProperty = 107,
+			nValue = 0.0010000000474975
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[61] = {
+		eClass = 4,
+		nExampleId = 90627,
+		strName = "Scourge",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[62] = {
+		eClass = 4,
+		nExampleId = 90666,
+		strName = "Reanimator",
+		tTierInfo = { nil, {
+			eProperty = 107,
+			nValue = 0.0010000000474975
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[63] = {
+		eClass = 7,
+		nExampleId = 90639,
+		strName = "Bullet From Beyond",
+		tTierInfo = { nil, {
+			eProperty = 104,
+			nValue = 0.01499999664724
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[64] = {
+		eClass = 7,
+		nExampleId = 90678,
+		strName = "Voice From Beyond",
+		tTierInfo = { nil, {
+			eProperty = 107,
+			nValue = 0.0010000000474975
+		},
+		{},
+		{} },
+		tTiers = { 1, 2, 3 }
+	},
+	[65] = {
+		nExampleId = 90720,
+		strName = "Palliated",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 42
+			},
+			{
+				eProperty = 158,
+				nValue = 0.045000001788139
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[66] = {
+		nExampleId = 90723,
+		strName = "Intensification",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 5
+			},
+			{
+				eProperty = 157,
+				nValue = 0.0083999997004867
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[67] = {
+		nExampleId = 90729,
+		strName = "Resumption",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 154,
+				nValue = 0.0074999998323619
+			},
+			{
+				eProperty = 107,
+				nValue = 0.001500000130385
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[68] = {
+		nExampleId = 90732,
+		strName = "Gleaming",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 164,
+				nValue = 0.0034380001015961
+			},
+			{
+				eProperty = 195,
+				nValue = 0.01649999910593
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[69] = {
+		nExampleId = 90735,
+		strName = "Ruination",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 102,
+				nValue = 0.003125000465661
+			},
+			{
+				eProperty = 127,
+				nValue = 0.029999999329448
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[70] = {
+		nExampleId = 90741,
+		strName = "Evasion",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 42
+			},
+			{
+				eProperty = 101,
+				nValue = 0.004499998062849
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[71] = {
+		nExampleId = 90744,
+		strName = "Pandemic",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 102,
+				nValue = 0.0031250000465661
+			},
+			{
+				eProperty = 196,
+				nValue = 0.008399997004867
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[72] = {
+		nExampleId = 90744,
+		strName = "Siphoning",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 104,
+				nValue = 0.003749999916181
+			},
+			{
+				eProperty = 137,
+				nValue = 0.0063000000081956
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[73] = {
+		nExampleId = 90753,
+		strName = "Hardiness",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 164,
+				nValue = 0.003438000105961
+			},
+			{
+				eProperty = 101,
+				nValue = 0.0044999998062849
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[74] = {
+		nExampleId = 90762,
+		strName = "Basher",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 112,
+				nValue = 0.012000000104308
+			},
+			{
+				eProperty = 154,
+				nValue = 0.01799999922514
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[75] = {
+		nExampleId = 90756,
+		strName = "Rejuvenation",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 154,
+				nValue = 0.007499999323619
+			},
+			{
+				eProperty = 102,
+				nValue = 0.0074999998323619
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},
+	[76] = {
+		nExampleId = 90759,
+		strName = "Vim",
+		tTierInfo = { nil, 
+			{
+				eProperty = 7
+			},
+			{
+				eProperty = 102,
+				nValue = 0.0031250000465661
+			},
+			{
+				eProperty = 5,				
+			} 
+		},
+		tTiers = { 1, 2, 3 }
+	},	
   }
 
   
