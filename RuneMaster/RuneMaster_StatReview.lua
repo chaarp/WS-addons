@@ -102,6 +102,20 @@ local tStatData = {
 	fSoftCap = 0.30,
 	nDR = 4000
   },
+  [60] = {--Multi-Hit Severity
+	ePercentId = Unit.CodeEnumProperties.BaseMultiHitAmount,
+	fBase = 0.30,
+	fCoeff = 0.000064,
+	fSoftCap = 0.60,
+	nDR = 9375
+  },
+  [61] = {--Glance mitigation
+	 ePercentId = Unit.CodeEnumProperties.BaseGlanceAmount,
+	 fBase = 0.30,
+     fCoeff= 0.000055,
+	 fSoftCap = 0.60,
+	 nDR = 10910
+  },
   [63] = {--Reflect Rating --UNF
 	--[[fBase = Unit.CodeEnumProperties.BaseDamageReflectChance,
 	fCoeff = 0.00005,
@@ -122,7 +136,7 @@ local ktEnumPercentToRating = {
 	[Unit.CodeEnumProperties.BaseHealth] = 7,
 	[Unit.CodeEnumProperties.BaseLifesteal] = 25,
 	[Unit.CodeEnumProperties.BaseMultiHitChance] = 29,
-	--[Unit.CodeEnumProperties.BaseMultiHitAmount] = 60, --112
+	[Unit.CodeEnumProperties.BaseMultiHitAmount] = 60, --112
 	[Unit.CodeEnumProperties.BaseAvoidReduceChance] = 32,
 	[Unit.CodeEnumProperties.BaseAvoidChance] = 33,
 	[Unit.CodeEnumProperties.BaseCritChance] = 34,
@@ -134,6 +148,7 @@ local ktEnumPercentToRating = {
 	[Unit.CodeEnumProperties.BaseGlanceChance] = 58,
 	[Unit.CodeEnumProperties.BaseDamageReflectChance] = 63,
 	[Unit.CodeEnumProperties.CCDurationModifier] = 64,
+	[Unit.CodeEnumProperties.BaseGlanceAmount] = 61
 }
 
  tStatReview_Armors = {}
@@ -507,9 +522,7 @@ function RuneMaster:StatReview_UpdateStatReview() --V3
 	--GUI Prep
 	self.wndMain:FindChild("wndStatReview"):DestroyChildren()
 	
-	local rover = Apollo.GetAddon("Rover");
-	--rover:AddWatch("stats", tStatReview_Armors);
-	--rover:AddWatch("sets", ktSets);
+	--local rover = Apollo.GetAddon("Rover");	
 	
 	--tStatReview Table Format as: tStatReview={stats={[eStat]={curr=#,plan=#}},sets={[eSet]={curr=#,plan=#}}}
 	--Get stats
@@ -631,7 +644,7 @@ function RuneMaster:StatReview_UpdateStatReview() --V3
 			if bPlanDR then
 				wndStat:FindChild("Plan"):SetTextColor("FFDDDD00")
 			end
-		else
+		else			
 			local wndStat = Apollo.LoadForm(self.xmlDoc, "StatReview_StatEntry", self.wndMain:FindChild("wndStatReview"), self)
 			local strStat = string.gsub(Item.GetPropertyName(eStatId)," Rating","") --TODO: Figure out how to handle this better. Locale?
 			wndStat:FindChild("Name"):SetText(strStat) --TODO: Locale

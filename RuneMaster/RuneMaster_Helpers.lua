@@ -10,6 +10,7 @@ function RuneMaster:HelperBuildItemTooltip(wndArg, itemCurr, bCompare)
 	tArgs.bPrimary = true
 	tArgs.bSelling = false
 	tArgs.itemCompare = bCompare and itemCurr:GetEquippedItemForItemType() or nil
+		
 	
 	Tooltip.GetItemTooltipForm(self, wndArg, itemCurr, tArgs)
 end
