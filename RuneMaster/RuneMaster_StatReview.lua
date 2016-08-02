@@ -488,16 +488,87 @@ local set = {
 
 end
 
+function RuneMaster:GetCuratorSet()
+
+	local set = {
+				nMaxPower = 8,
+				nSetId = 15,
+				strSetName = "Curator",		
+				arBonuses = {
+					{
+					bDefault = true,
+					eProperty = 102,
+					nPower = 2,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0017500000540167,
+					strName = "Critical Hit Chance"
+					},
+					{
+					bDefault = true,
+					eProperty = 107,
+					nPower = 3,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.00015999999595806,
+					strName = "Focus Recovery Rate"},
+					
+					{
+					bDefault = false,
+					nPower = 4
+					},
+					{
+					bDefault = true,
+					eProperty = 127,
+					nPower = 5,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.0099999997764826,
+					strName = "Critical Hit Severity"
+					},
+					{
+					bDefault = true,
+					eProperty = 107,
+					nPower = 6,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.00015999999595806,
+					strName = "Focus Recovery Rate"
+					},
+					{
+					bDefault = true,
+					eProperty = 102,
+					nPower = 7,
+					nScalar = 0,
+					nSortOrder = 0,
+					nValue = 0.003000000026077,
+					strName = "Critical Hit Chance"
+					},
+					{
+					bDefault = false,
+					nPower = 8
+					},
+				}					
+	}
+
+	return set
+
+end
+
+
 function RuneMaster:StatReview_UpdateStatReview() --V3
 	--TODO: Move this to self.ktSets
 	local ktSetsTemp = CraftingLib.GetRuneSets()
 	
 	local ruthless = self:GetRuthlessSet();	
 	local foil = self:GetFoilSet()
+	local curator = self:GetCuratorSet();
 	
 	local ktSets = {}
-	ktSets[ruthless.nSetId] = ruthless
-	ktSets[foil.nSetId] = foil
+	ktSets[ruthless.nSetId] = ruthless;
+	ktSets[foil.nSetId] = foil;
+	ktSets[curator.nSetId] = curator;
+
 	
 	for _,tSet in pairs(ktSetsTemp) do
 		ktSets[tSet.nSetId] = tSet
