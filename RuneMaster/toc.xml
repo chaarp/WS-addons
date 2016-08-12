@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Addon Author="Potato, Chaarp" APIVersion="12" Name="RuneMaster" Description="" Version="">
+<Addon Author="Potato, Chaarp" APIVersion="13" Name="RuneMaster" Description="" Version="">
     <Script Name="Libs/LibJSON/LibJSON-2.5.lua"/>
     <Script Name="RuneMaster.lua"/>
     <Script Name="RuneMaster_Data.lua"/>
