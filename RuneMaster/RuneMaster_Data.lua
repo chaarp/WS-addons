@@ -149,6 +149,7 @@ RuneMaster.ktArmorSlotInfo = {
 
 --Updateable information
 RuneMaster.ktRuneLevels = {0,70,90,100,110,130}
+RuneMaster.ktRuneItemLevels = {0,10,20,30,40,50,80,100,110,120,140}
 RuneMaster.ktRuneLevelNames = {
 	[10] = "Lesser",
 	[20] = "Normal",
@@ -156,7 +157,7 @@ RuneMaster.ktRuneLevelNames = {
 	[40] = "Refined",
 	[50] = "High",
 	[80] = "Superb",
-	[100] = "Pure",
+	[100] = "Pure",	
 	[120] = "Divine",
 	[140] = "Risen"
 }

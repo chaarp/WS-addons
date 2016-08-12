@@ -48,7 +48,7 @@ function RuneMaster:RuneContent_Init()
 	end
 	wndRuneChoice:FindChild("StatFilter"):ArrangeChildrenVert()
 	
-	local tLevels = CraftingLib.GetRunecraftingLevels()--self.ktRuneLevels--
+	local tLevels = RuneMaster.ktRuneItemLevels --CraftingLib.GetRunecraftingLevels()
 	for _,nLevel in pairs(tLevels) do
 		local wndLevel = Apollo.LoadForm(self.xmlDoc, "RuneChoice_iLvl", wndRuneChoice:FindChild("iLvl"), self)
 		if self.settings.showlevelnames then
@@ -67,7 +67,7 @@ end
 function RuneMaster:FusionContent_Init()
 	local wndRuneChoice = self.wndRuneChoice:FindChild("FusionContent")
 	
-	local tLevels = CraftingLib.GetRunecraftingLevels()--self.ktRuneLevels--
+	local tLevels = RuneMaster.ktRuneItemLevels --CraftingLib.GetRunecraftingLevels()
 	for _,nLevel in pairs(tLevels) do
 		local wndLevel = Apollo.LoadForm(self.xmlDoc, "RuneChoice_iLvl", wndRuneChoice:FindChild("iLvl"), self)
 		wndLevel:SetText(nLevel)
@@ -362,6 +362,8 @@ function RuneMaster:UpdatePossibleRunes()
 	end
 	wndRuneChoice:FindChild("Runes"):DestroyChildren()
 
+	
+	
 	local tSets = wndRuneChoice:FindChild("SetFilter"):GetChildren()
 	local tStats = {}
 	for _,wndStat in pairs(wndRuneChoice:FindChild("StatFilter"):GetChildren()) do
@@ -391,11 +393,12 @@ function RuneMaster:UpdatePossibleRunes()
 			end
 			if self.ktRuneElements[vSet][nFilterLevel] then 	
 				for nRuneId,eStat in pairs(self.ktRuneElements[vSet][nFilterLevel]) do
-					if not self.tUniqueRunes[nRuneId] and not luaItem.tItemUniqueRunes[nRuneId] and nCurrRuneId ~= nRuneId then
+--					not self.tUniqueRunes[nRuneId] and
+					if not luaItem.tItemUniqueRunes[nRuneId] and nCurrRuneId ~= nRuneId then
 						if tStats[eStat] then
 							self:DrawPossibleRune(nRuneId, eStat, wndRuneChoice:FindChild("Runes"))
 						end
-					else
+					--else
 						--Print("Found duplicate for",nRuneId)
 					end
 				end
